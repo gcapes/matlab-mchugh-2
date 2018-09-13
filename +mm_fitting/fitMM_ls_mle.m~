@@ -554,7 +554,8 @@ function [fitMM_ls_mle,res]=...
                         sumTerm = sumTerm + expr;
                     end
                 end
-                                
+                % assert(isequal(sumTerm, sumTerm_vec))
+                
                 icsig=exp((-0.5.*gamma.^2./Di.^2).*sumTerm);
                 icsig_vec = exp((-0.5.*gamma.^2./Di.^2).*sumTerm_vec);
                 assert(isequal(icsig, icsig_vec))
