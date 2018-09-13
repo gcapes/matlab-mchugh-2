@@ -491,7 +491,8 @@ function [fitMM_ls_mle,res]=...
                         N+(-2).*del.*v)+(-1).*e.*((-4).*exp(1).^((1/2).*Di.*del.*l_vec).*del.*v+exp(1).^( ...
                         (1/4).*Di.*N.*l_vec.*v.^(-1)).*(N+2.*del.*v))));
                     expr_vec = (B_vec./(l_vec.^2)).*W_vec;
-                    sumTerm_vec = sum(expr_vec, 2, 'omitnan');
+                    expr_cols = ~any(isnan(expr_vec), 1);
+                    sumTerm_vec = sum(expr_vec(:, expr_cols), 2, 'omitnan');
                     
                 
                 % Original loop version
