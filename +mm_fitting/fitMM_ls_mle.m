@@ -1265,7 +1265,6 @@ function [fitMM_ls_mle,res]=...
                 end
                 
             case 'DiDe_with_rise_time'
-                %
                 e=scanParam(:,5);
                 R=a(1);
                 Di=a(2);
@@ -1333,6 +1332,8 @@ function [fitMM_ls_mle,res]=...
                     1.*((f.*icsig)+...
                     ((1-f).*exp(-(gamma.^2.*Grad.^2.*(del.^2 .*(DEL-del./3)+...
                     e.^3./30-del.*(e.^2)./6)).*(De./(1+f./2)))));
+                
+                assert(isequal(F, calculate_signalModelF(e, a, N, v, rootsS, del, DEL, Grad, gamma)))
                 
             case 'DiDe_notort'
                 R=a(1);
